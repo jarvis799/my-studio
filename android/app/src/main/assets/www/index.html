@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio</title>
+    <meta name="description" content="Personal site and Android app." />
+    <style>
+:root {
+  --bg: #f7f9f5;
+  --ink: #0f1b14;
+  --muted: #5c6b60;
+  --line: rgba(15, 27, 20, 0.1);
+  --lime: #b9f227;
+  --green: #0f5132;
+  --card: rgba(255, 255, 255, 0.72);
+  --radius: 22px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Inter, system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+.shell { width: 100%; max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+.glow {
+  position: fixed; z-index: 0; border-radius: 50%; filter: blur(90px); opacity: 0.5;
+  pointer-events: none;
+}
+.glow-a { width: 380px; height: 380px; top: -120px; right: -120px; background: #d7fb8a; }
+.glow-b { width: 320px; height: 320px; bottom: -140px; left: -120px; background: #b9f2e0; }
+header.shell, main.shell, footer.shell { position: relative; z-index: 1; }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+.mark { font-weight: 700; letter-spacing: -0.02em; }
+.nav-links { display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+.pill {
+  padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.8); color: var(--ink); font-weight: 600;
+}
+.hero { display: grid; gap: 24px; padding: 28px 0 12px; align-items: center; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--green); background: rgba(185, 242, 39, 0.28);
+  padding: 6px 12px; border-radius: 999px;
+}
+.chip::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #4f9d1a; }
+h1 { font-size: clamp(34px, 9vw, 62px); line-height: 1.02; letter-spacing: -0.03em; margin: 16px 0 6px; }
+.role { color: var(--green); font-weight: 600; margin: 0 0 10px; }
+.tagline { color: var(--muted); max-width: 46ch; margin: 0; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.btn {
+  display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  gap: 1px; padding: 12px 20px; border-radius: 16px; font-size: 13px; font-weight: 700;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.btn small { font-weight: 500; opacity: 0.7; font-size: 11px; }
+.btn:hover { transform: translateY(-2px); }
+.primary {
+  background: linear-gradient(120deg, #b9f227, #7ee2b8); color: #0b2417;
+  box-shadow: 0 16px 34px -18px rgba(80, 160, 40, 0.7);
+}
+.ghost { border: 1px solid var(--line); background: var(--card); backdrop-filter: blur(12px); }
+.avatar {
+  width: 100%; max-width: 300px; aspect-ratio: 1; border-radius: 28px; overflow: hidden;
+  background: linear-gradient(150deg, #e8fbd4, #cdf6ea); border: 1px solid var(--line);
+  box-shadow: 0 30px 60px -40px rgba(15, 81, 50, 0.5); background-size: cover; background-position: center;
+}
+.block { padding: 34px 0; }
+h2 { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+.grid { display: grid; gap: 12px; }
+.card {
+  padding: 18px; border-radius: var(--radius); border: 1px solid var(--line);
+  background: var(--card); backdrop-filter: blur(14px);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.card:hover { transform: translateY(-3px); border-color: rgba(80, 160, 40, 0.35); }
+.card h3 { margin: 0 0 6px; font-size: 15px; letter-spacing: -0.01em; }
+.card p { margin: 0; color: var(--muted); font-size: 13px; }
+.card .go { display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--green); }
+.prose { color: var(--muted); max-width: 60ch; margin: 0; }
+.meta { color: var(--muted); font-size: 12px; margin: 8px 0 0; }
+.contact-card {
+  display: grid; gap: 16px; padding: 20px; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--card); backdrop-filter: blur(14px);
+}
+.contact-line { font-weight: 600; word-break: break-all; }
+.socials { display: flex; flex-wrap: wrap; gap: 8px; }
+.social {
+  font-size: 12px; padding: 7px 13px; border-radius: 999px;
+  border: 1px solid var(--line); background: rgba(255, 255, 255, 0.75);
+}
+.social:hover { border-color: rgba(80, 160, 40, 0.4); }
+.foot {
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between;
+  border-top: 1px solid var(--line); margin-top: 20px; padding-top: 16px; padding-bottom: 34px;
+  color: var(--muted); font-size: 11px;
+}
+@media (min-width: 760px) {
+  .hero { grid-template-columns: 1.25fr 0.75fr; padding: 52px 0 20px; }
+  .avatar { max-width: none; }
+  .grid { grid-template-columns: 1fr 1fr; }
+  .contact-card { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+  </head>
+  <body>
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+
+    <header class="shell">
+      <nav class="nav">
+        <span class="mark" data-name-short>Portfolio</span>
+        <div class="nav-links">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#contact" class="pill">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="chip">Available for work</span>
+          <h1 data-name>Your Name</h1>
+          <p class="role" data-role>Full-stack developer</p>
+          <p class="tagline" data-tagline></p>
+          <div class="hero-actions">
+            <a class="btn primary" data-app-download href="#" hidden>
+              <span>Download Android app</span>
+              <small>Better experience</small>
+            </a>
+            <a class="btn ghost" data-email href="#contact">Email me</a>
+          </div>
+        </div>
+        <div class="avatar" data-avatar></div>
+      </section>
+
+      <section id="work" class="block">
+        <h2>Selected work</h2>
+        <div class="grid" data-projects></div>
+      </section>
+
+      <section id="about" class="block">
+        <h2>About</h2>
+        <p class="prose" data-about></p>
+        <p class="meta" data-location></p>
+      </section>
+
+      <section id="contact" class="block">
+        <h2>Contact</h2>
+        <div class="contact-card">
+          <div>
+            <p class="meta">Email</p>
+            <a class="contact-line" data-email-text href="#">you@example.com</a>
+          </div>
+          <div data-phone-wrap hidden>
+            <p class="meta">Phone</p>
+            <a class="contact-line" data-phone-text href="#"></a>
+          </div>
+          <div class="socials" data-socials></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell foot">
+      <span data-name-copy>Portfolio</span>
+      <span>Built with the same repo as the Android app.</span>
+    </footer>
+
+    <script>window.__DEVSTYLE_CONTENT__ = {"name":"My git push","role":"Full-stack developer","tagline":"I design and build fast, friendly products for the web and Android.","about":"Short bio goes here. Say what you do, who you help and what makes your work different. Two or three sentences is plenty.","email":"you@example.com","phone":"","location":"Dhaka, Bangladesh","photo":"","socials":[{"label":"GitHub","url":"https://github.com"},{"label":"LinkedIn","url":"https://linkedin.com"}],"projects":[{"title":"Project one","text":"What it does and the result it got.","link":""},{"title":"Project two","text":"What it does and the result it got.","link":""}],"app":{"repo":"jarvis799/my-studio","site":"https://jarvis799.github.io/my-studio/","note":"Offline inbox, auto replies and faster loading."}};</script>
+<script>
+(async function () {
+  var data = window.__DEVSTYLE_CONTENT__ || null;
+  if (!data) {
+    try {
+      var res = await fetch('content.json', { cache: 'no-store' });
+      if (res.ok) data = await res.json();
+    } catch (e) {
+      data = null;
+    }
+  }
+  if (!data) return;
+  var q = function (sel) { return document.querySelector(sel); };
+  var all = function (sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); };
+
+  var name = data.name || 'Portfolio';
+  all('[data-name], [data-name-short], [data-name-copy]').forEach(function (el) {
+    el.textContent = el.hasAttribute('data-name-short') ? name.split(' ')[0] : name;
+  });
+  if (data.role) q('[data-role]').textContent = data.role;
+  if (data.tagline) q('[data-tagline]').textContent = data.tagline;
+  if (data.about) q('[data-about]').textContent = data.about;
+  if (data.location) q('[data-location]').textContent = data.location;
+  if (data.photo) q('[data-avatar]').style.backgroundImage = 'url("' + data.photo + '")';
+  document.title = name + (data.role ? ' · ' + data.role : '');
+
+  if (data.email) {
+    all('[data-email]').forEach(function (el) { el.href = 'mailto:' + data.email; });
+    var mail = q('[data-email-text]');
+    mail.textContent = data.email;
+    mail.href = 'mailto:' + data.email;
+  }
+  if (data.phone) {
+    q('[data-phone-wrap]').hidden = false;
+    var phone = q('[data-phone-text]');
+    phone.textContent = data.phone;
+    phone.href = 'tel:' + data.phone.replace(/[^+0-9]/g, '');
+  }
+  var app = data.app || {};
+  var download = q('[data-app-download]');
+  if (app.repo) {
+    download.hidden = false;
+    download.href = 'https://github.com/' + app.repo + '/releases/latest';
+    var note = download.querySelector('small');
+    if (note && app.note) note.textContent = app.note;
+  }
+
+  var socials = q('[data-socials]');
+  (data.socials || []).forEach(function (item) {
+    if (!item || !item.url) return;
+    var a = document.createElement('a');
+    a.className = 'social';
+    a.href = item.url;
+    a.target = '_blank';
+    a.rel = 'noreferrer';
+    a.textContent = item.label || item.url;
+    socials.appendChild(a);
+  });
+
+  var projects = q('[data-projects]');
+  (data.projects || []).forEach(function (item) {
+    var card = document.createElement('article');
+    card.className = 'card';
+    var title = document.createElement('h3');
+    title.textContent = item.title || 'Project';
+    var text = document.createElement('p');
+    text.textContent = item.text || '';
+    card.appendChild(title);
+    card.appendChild(text);
+    if (item.link) {
+      var go = document.createElement('a');
+      go.className = 'go';
+      go.href = item.link;
+      go.target = '_blank';
+      go.rel = 'noreferrer';
+      go.textContent = 'Open →';
+      card.appendChild(go);
+    }
+    projects.appendChild(card);
+  });
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "My git push",
+  "role": "Full-stack developer",
+  "tagline": "I design and build fast, friendly products for the web and Android.",
+  "about": "Short bio goes here. Say what you do, who you help and what makes your work different. Two or three sentences is plenty.",
+  "email": "you@example.com",
+  "phone": "",
+  "location": "Dhaka, Bangladesh",
+  "photo": "",
+  "socials": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://linkedin.com"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Project one",
+      "text": "What it does and the result it got.",
+      "link": ""
+    },
+    {
+      "title": "Project two",
+      "text": "What it does and the result it got.",
+      "link": ""
+    }
+  ],
+  "app": {
+    "repo": "jarvis799/my-studio",
+    "site": "https://jarvis799.github.io/my-studio/",
+    "note": "Offline inbox, auto replies and faster loading."
+  }
+}

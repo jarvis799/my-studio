@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_title"
+        android:textColor="@color/ink"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/settings_hint"
+        android:textColor="@color/muted"
+        android:textSize="12sp" />
+
+    <EditText android:id="@+id/fieldEmail" style="@style/Field" android:hint="@string/email" android:inputType="textEmailAddress" />
+    <EditText android:id="@+id/fieldPassword" style="@style/Field" android:hint="@string/password" android:inputType="textPassword" />
+    <EditText android:id="@+id/fieldDisplayName" style="@style/Field" android:hint="@string/display_name" android:inputType="textPersonName" />
+    <EditText android:id="@+id/fieldImapHost" style="@style/Field" android:hint="@string/imap_host" android:inputType="text" />
+    <EditText android:id="@+id/fieldImapPort" style="@style/Field" android:hint="@string/imap_port" android:inputType="number" />
+    <EditText android:id="@+id/fieldSmtpHost" style="@style/Field" android:hint="@string/smtp_host" android:inputType="text" />
+    <EditText android:id="@+id/fieldSmtpPort" style="@style/Field" android:hint="@string/smtp_port" android:inputType="number" />
+
+    <Switch
+        android:id="@+id/switchAuto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/auto_reply"
+        android:textColor="@color/ink" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/reply_template"
+        android:textColor="@color/muted"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/fieldReply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:minLines="8"
+        android:gravity="top"
+        android:padding="12dp"
+        android:background="@drawable/field_bg"
+        android:fontFamily="monospace"
+        android:textSize="11sp"
+        android:textColor="@color/ink"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button_bg"
+        android:text="@string/save"
+        android:textColor="@color/ink"
+        android:textStyle="bold" />
+</LinearLayout>

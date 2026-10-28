@@ -1,3 +1,9 @@
 node_modules
 dist
+_site
+.gradle
+android/.gradle
+android/build
+android/app/build
+android/local.properties
 .DS_Store

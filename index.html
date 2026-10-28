@@ -1,12 +1,77 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevStyle Starter</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio</title>
+    <meta name="description" content="Personal site and Android app." />
+    <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+
+    <header class="shell">
+      <nav class="nav">
+        <span class="mark" data-name-short>Portfolio</span>
+        <div class="nav-links">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#contact" class="pill">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="chip">Available for work</span>
+          <h1 data-name>Your Name</h1>
+          <p class="role" data-role>Full-stack developer</p>
+          <p class="tagline" data-tagline></p>
+          <div class="hero-actions">
+            <a class="btn primary" data-app-download href="#" hidden>
+              <span>Download Android app</span>
+              <small>Better experience</small>
+            </a>
+            <a class="btn ghost" data-email href="#contact">Email me</a>
+          </div>
+        </div>
+        <div class="avatar" data-avatar></div>
+      </section>
+
+      <section id="work" class="block">
+        <h2>Selected work</h2>
+        <div class="grid" data-projects></div>
+      </section>
+
+      <section id="about" class="block">
+        <h2>About</h2>
+        <p class="prose" data-about></p>
+        <p class="meta" data-location></p>
+      </section>
+
+      <section id="contact" class="block">
+        <h2>Contact</h2>
+        <div class="contact-card">
+          <div>
+            <p class="meta">Email</p>
+            <a class="contact-line" data-email-text href="#">you@example.com</a>
+          </div>
+          <div data-phone-wrap hidden>
+            <p class="meta">Phone</p>
+            <a class="contact-line" data-phone-text href="#"></a>
+          </div>
+          <div class="socials" data-socials></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell foot">
+      <span data-name-copy>Portfolio</span>
+      <span>Built with the same repo as the Android app.</span>
+    </footer>
+
+    <script src="assets/site.js"></script>
   </body>
 </html>

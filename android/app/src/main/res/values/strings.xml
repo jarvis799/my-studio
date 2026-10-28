@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My App</string>
+    <string name="site">Site</string>
+    <string name="inbox">Inbox</string>
+    <string name="settings">Settings</string>
+    <string name="settings_title">Mail and auto reply</string>
+    <string name="settings_hint">Use an app password, not your normal password. Gmail: imap.gmail.com / smtp.gmail.com.</string>
+    <string name="email">Mail address</string>
+    <string name="password">App password</string>
+    <string name="display_name">Your display name</string>
+    <string name="imap_host">IMAP host</string>
+    <string name="imap_port">IMAP port</string>
+    <string name="smtp_host">SMTP host</string>
+    <string name="smtp_port">SMTP port</string>
+    <string name="auto_reply">Send an HTML auto reply</string>
+    <string name="reply_template">Reply template — {{name}} and {{subject}} are filled in</string>
+    <string name="save">Save and start the inbox</string>
+    <string name="inbox_empty">No messages yet. Save your mail settings to start checking.</string>
+</resources>
