@@ -111,79 +111,31 @@ public class MainActivity extends AppCompatActivity {
         final Prefs prefs = new Prefs(this);
         final EditText email = findViewById(R.id.fieldEmail);
         final EditText password = findViewById(R.id.fieldPassword);
-        final EditText displayName = findViewById(R.id.fieldDisplayName);
-        final EditText imapHost = findViewById(R.id.fieldImapHost);
-        final EditText imapPort = findViewById(R.id.fieldImapPort);
-        final EditText smtpHost = findViewById(R.id.fieldSmtpHost);
-        final EditText smtpPort = findViewById(R.id.fieldSmtpPort);
-        final EditText reply = findViewById(R.id.fieldReply);
-        final android.widget.Switch auto = findViewById(R.id.switchAuto);
-
-        email.setText(prefs.email());
-        password.setText(prefs.password());
-        displayName.setText(prefs.displayName());
-        imapHost.setText(prefs.imapHost());
-        imapPort.setText(String.valueOf(prefs.imapPort()));
-        smtpHost.setText(prefs.smtpHost());
-        smtpPort.setText(String.valueOf(prefs.smtpPort()));
-        reply.setText(prefs.replyHtml());
-        auto.setChecked(prefs.autoReply());
-
-        Button save = findViewById(R.id.buttonSave);
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                prefs.save(
-                    email.getText().toString().trim(),
-                    password.getText().toString(),
-                    displayName.getText().toString().trim(),
-                    imapHost.getText().toString().trim(),
-                    number(imapPort.getText().toString(), 993),
-                    smtpHost.getText().toString().trim(),
-                    number(smtpPort.getText().toString(), 465),
-                    auto.isChecked(),
-                    reply.getText().toString()
-                );
-                MailService.start(MainActivity.this);
-                Toast.makeText(MainActivity.this, "Saved — checking mail now", Toast.LENGTH_SHORT).show();
-            }
+        Button save = findViewById(R.id.btnSave);
+        email.setText(prefs.getEmail());
+        password.setText(prefs.getPassword());
+        save.setOnClickListener(view -> {
+            prefs.save(email.getText().toString(), password.getText().toString());
+            Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
         });
     }
 
-    private int number(String value, int fallback) {
-        try {
-            return Integer.parseInt(value.trim());
-        } catch (Exception error) {
-            return fallback;
-        }
-    }
-
-    private boolean assetExists(String path) {
-        try (InputStream in = getAssets().open(path)) {
-            return in != null;
-        } catch (Exception error) {
-            return false;
-        }
-    }
-
-    private String readAsset(String path) {
-        try (InputStream in = getAssets().open(path)) {
-            java.io.ByteArrayOutputStream out = new java.io.ByteArrayOutputStream();
-            byte[] buffer = new byte[4096];
-            int read;
-            while ((read = in.read(buffer)) != -1) out.write(buffer, 0, read);
-            return out.toString("UTF-8");
-        } catch (Exception error) {
+    private String readAsset(String name) {
+        try (InputStream is = getAssets().open(name)) {
+            byte[] buffer = new byte[is.available()];
+            is.read(buffer);
+            return new String(buffer);
+        } catch (Exception e) {
             return "{}";
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        if (web != null && web.canGoBack()) {
-            web.goBack();
-            return;
+    private boolean assetExists(String name) {
+        try {
+            getAssets().open(name).close();
+            return true;
+        } catch (Exception e) {
+            return false;
         }
-        super.onBackPressed();
     }
 }
