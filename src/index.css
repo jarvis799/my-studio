@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 160 20% 12%;
+  --card: 0 0% 100%;
+  --muted: 150 20% 96%;
+  --muted-foreground: 160 8% 42%;
+  --border: 150 15% 90%;
+  --primary: 82 80% 55%;
+}
+
+body {
+  background: radial-gradient(circle at 12% 8%, #ecfccb 0%, transparent 45%),
+    radial-gradient(circle at 88% 92%, #d1fae5 0%, transparent 45%), #f8fafc;
+  color: hsl(var(--foreground));
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+.card {
+  border-radius: 1.25rem;
+  border: 1px solid hsl(var(--border));
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px -45px rgba(15, 23, 42, 0.55);
+}
